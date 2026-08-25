@@ -22,7 +22,6 @@ class Drama:
         return f"Den första regisören är: {director1}"
 
 
-
 def read_drama():
     with open('kdrama.csv', newline='') as csvfile:
         kdrama = csv.reader(csvfile)
@@ -44,16 +43,17 @@ def find_drama_from_year(list, year):
 
 
 drama = read_drama()
-print(drama[0])
-print(drama[1])
-print(drama[0]<drama[1])
-print(drama[0].actors())
-print(drama[1].actors())
-print(drama[0].first_director())
-print(drama[1].first_director())
-
-number_of_dramas_from_2020 = find_drama_from_year(drama,2020)
-print(number_of_dramas_from_2020)
+i = 0
+for row in drama:
+    print(drama[i])
+    print("Är detta dramat sämre än: ",drama[i+1],"?",drama[i]<drama[i+1])
+    print(drama[i].actors())
+    print(drama[i].first_director())
+    if i >= 1:
+        break
+    i+=1
+    
+print("Hur många draman hittades 2020:",find_drama_from_year(drama,2020),"st")
 
 
 
